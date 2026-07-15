@@ -6,6 +6,7 @@ import ChromaGrid from './components/ChromaGrid/ChromaGrid';
 import CircularGallery from './components/CircularGallery/CircularGallery';
 import ScrollStack, { ScrollStackItem } from './components/ScrollStack/ScrollStack';
 import BorderGlow from './components/BorderGlow/BorderGlow';
+import Particles from './components/Particles/Particles';
 
 const Lanyard = lazy(() => import('./components/Lanyard/Lanyard'));
 
@@ -210,7 +211,17 @@ export default function App() {
       </header>
 
       {/* Work / Projects */}
-      <section className="section" id="work">
+      <section className="section" id="work" style={{ position: 'relative', overflow: 'hidden' }}>
+        <Particles
+          particleColors={["#7042f8", "#00f2fe", "#ffffff"]}
+          particleCount={40}
+          particleSpread={10}
+          speed={0.12}
+          particleBaseSize={80}
+          moveParticlesOnHover={true}
+          alphaParticles={true}
+          disableRotation={false}
+        />
         <div className="section__header-toggle">
           <h2 className="section__title reveal" style={{ margin: 0 }}>Selected Work</h2>
           <div className="view-toggle">
@@ -338,7 +349,17 @@ export default function App() {
       </section>
 
       {/* Skills Section */}
-      <section className="section" id="skills">
+      <section className="section" id="skills" style={{ position: 'relative', overflow: 'hidden' }}>
+        <Particles
+          particleColors={["#7042f8", "#00f2fe", "#ffffff"]}
+          particleCount={45}
+          particleSpread={9}
+          speed={0.15}
+          particleBaseSize={70}
+          moveParticlesOnHover={true}
+          alphaParticles={true}
+          disableRotation={false}
+        />
         <h2 className="section__title reveal">Skills &amp; Technologies</h2>
         <div className="skills__grid reveal">
           <div className="skills__category">
@@ -363,7 +384,17 @@ export default function App() {
       </section>
 
       {/* Education Section */}
-      <section className="section" id="education">
+      <section className="section" id="education" style={{ position: 'relative', overflow: 'hidden' }}>
+        <Particles
+          particleColors={["#7042f8", "#00f2fe", "#ffffff"]}
+          particleCount={40}
+          particleSpread={10}
+          speed={0.12}
+          particleBaseSize={80}
+          moveParticlesOnHover={true}
+          alphaParticles={true}
+          disableRotation={false}
+        />
         <h2 className="section__title reveal">Education</h2>
         <div className="timeline reveal">
           <div className="timeline__item">
@@ -394,7 +425,17 @@ export default function App() {
       </section>
 
       {/* About — Split layout with Lanyard */}
-      <section className="section about" id="about">
+      <section className="section about" id="about" style={{ position: 'relative', overflow: 'hidden' }}>
+        <Particles
+          particleColors={["#7042f8", "#00f2fe", "#ffffff"]}
+          particleCount={40}
+          particleSpread={10}
+          speed={0.12}
+          particleBaseSize={80}
+          moveParticlesOnHover={true}
+          alphaParticles={true}
+          disableRotation={false}
+        />
         <h2 className="section__title reveal">About</h2>
         <div className="about__split reveal">
           <BorderGlow
@@ -426,7 +467,17 @@ export default function App() {
       </section>
 
       {/* Contact */}
-      <section className="section contact" id="contact">
+      <section className="section contact" id="contact" style={{ position: 'relative', overflow: 'hidden' }}>
+        <Particles
+          particleColors={["#7042f8", "#00f2fe", "#ffffff"]}
+          particleCount={40}
+          particleSpread={10}
+          speed={0.12}
+          particleBaseSize={80}
+          moveParticlesOnHover={true}
+          alphaParticles={true}
+          disableRotation={false}
+        />
         <h2 className="section__title reveal">Let's connect</h2>
         <div className="contact__container reveal">
           <div className="contact__info">
