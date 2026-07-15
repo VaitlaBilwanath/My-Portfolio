@@ -5,6 +5,7 @@ import CardSwap, { Card } from './components/CardSwap/CardSwap';
 import ChromaGrid from './components/ChromaGrid/ChromaGrid';
 import CircularGallery from './components/CircularGallery/CircularGallery';
 import ScrollStack, { ScrollStackItem } from './components/ScrollStack/ScrollStack';
+import BorderGlow from './components/BorderGlow/BorderGlow';
 
 const Lanyard = lazy(() => import('./components/Lanyard/Lanyard'));
 
@@ -396,9 +397,21 @@ export default function App() {
       <section className="section about" id="about">
         <h2 className="section__title reveal">About</h2>
         <div className="about__split reveal">
-          <div className="about__text">
-            <p>I'm Vaitla Bilwanath, a B.Tech Computer Science Engineering student specializing in Full Stack Development with a strong passion for Artificial Intelligence, modern web development, and software engineering. I enjoy building scalable web applications, AI-powered assistants, and intuitive user experiences using technologies like React, Node.js, Express.js, PostgreSQL, Prisma, and Python. I'm constantly exploring new technologies, solving real-world problems, and creating projects that combine innovation with practical impact.</p>
-          </div>
+          <BorderGlow
+            edgeSensitivity={30}
+            glowColor="260 85 70"
+            backgroundColor="rgba(3, 0, 20, 0.45)"
+            borderRadius={18}
+            glowRadius={50}
+            glowIntensity={1.0}
+            coneSpread={25}
+            animated={true}
+            colors={['#7042f8', '#00f2fe', '#f472b6']}
+          >
+            <div className="about__text" style={{ background: 'transparent', border: 'none', padding: '3rem', margin: 0 }}>
+              <p>I'm Vaitla Bilwanath, a B.Tech Computer Science Engineering student specializing in Full Stack Development with a strong passion for Artificial Intelligence, modern web development, and software engineering. I enjoy building scalable web applications, AI-powered assistants, and intuitive user experiences using technologies like React, Node.js, Express.js, PostgreSQL, Prisma, and Python. I'm constantly exploring new technologies, solving real-world problems, and creating projects that combine innovation with practical impact.</p>
+            </div>
+          </BorderGlow>
           <div className="about__lanyard">
             <Suspense fallback={<div className="lanyard-loading">Loading 3D Card...</div>}>
               <Lanyard
