@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, Suspense, lazy } from 'react';
 import Lightfall from './lightfall';
 import PillNav from './components/PillNav/PillNav';
-import ScrollStack, { ScrollStackItem } from './components/ScrollStack/ScrollStack';
+import ChromaGrid from './components/ChromaGrid/ChromaGrid';
 import BorderGlow from './components/BorderGlow/BorderGlow';
 import Particles from './components/Particles/Particles';
 
@@ -219,33 +219,13 @@ export default function App() {
           disableRotation={false}
         />
         <h2 className="section__title reveal">Selected Work</h2>
-        <div style={{ marginTop: '3rem', minHeight: '600px', position: 'relative', width: '100%', overflow: 'visible' }}>
-          <ScrollStack useWindowScroll={false} itemDistance={60} itemStackDistance={35} baseScale={0.88}>
-            {projects.map(project => (
-              <ScrollStackItem key={project.id}>
-                <article className="card" style={{ height: '100%', margin: 0, display: 'flex', flexDirection: 'row', gap: '2rem', padding: '2rem', alignItems: 'center' }}>
-                  <div className="card__media" style={{ width: '40%', height: '100%', flexShrink: 0, borderRadius: '12px', overflow: 'hidden' }}>
-                    <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, height: '100%', justifyContent: 'center' }}>
-                    <h3 className="card__title" style={{ fontSize: '1.45rem', marginBottom: '0.6rem' }}>{project.title}</h3>
-                    <p className="card__desc" style={{ fontSize: '0.94rem', marginBottom: '1.2rem', WebkitLineClamp: 3, display: '-webkit-box', WebkitBoxOrient: 'vertical', overflow: 'hidden', color: 'var(--muted)', lineHeight: '1.5' }}>{project.desc}</p>
-                    <div className="card__tags" style={{ marginBottom: '1.4rem' }}>
-                      {project.tags.map(tag => (
-                        <span key={tag}>{tag}</span>
-                      ))}
-                    </div>
-                    <div className="card__actions" style={{ marginTop: 'auto' }}>
-                      <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" className="btn-project btn-project--code">Code</a>
-                      {project.liveUrl && project.liveUrl !== '#' && (
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-project btn-project--live">Live Link</a>
-                      )}
-                    </div>
-                  </div>
-                </article>
-              </ScrollStackItem>
-            ))}
-          </ScrollStack>
+        <div style={{ marginTop: '3rem', minHeight: '600px', position: 'relative', width: '100%' }}>
+          <ChromaGrid
+            items={projects}
+            columns={3}
+            rows={2}
+            radius={280}
+          />
         </div>
       </section>
 
