@@ -4,6 +4,7 @@ import PillNav from './components/PillNav/PillNav';
 import ChromaGrid from './components/ChromaGrid/ChromaGrid';
 import BorderGlow from './components/BorderGlow/BorderGlow';
 import Particles from './components/Particles/Particles';
+import DecryptedText from './components/DecryptedText/DecryptedText';
 
 const Lanyard = lazy(() => import('./components/Lanyard/Lanyard'));
 
@@ -195,9 +196,39 @@ export default function App() {
       <header className="hero" id="hero">
         <div id="bg-canvas" ref={bgRef}></div>
         <div className="hero__content reveal">
-          <p className="hero__eyebrow">FULL STACK DEVELOPER • AI ENTHUSIAST</p>
-          <h1 className="hero__title"><span className="grad">VAITLA</span><br />BILWANATH</h1>
-          <p className="hero__sub">B.Tech Computer Science student passionate about building scalable web applications, AI-powered tools, and intuitive digital experiences.</p>
+          <p className="hero__eyebrow">
+            <DecryptedText
+              text="FULL STACK DEVELOPER • AI ENTHUSIAST"
+              animateOn="view"
+              speed={45}
+              maxIterations={10}
+            />
+          </p>
+          <h1 className="hero__title">
+            <span className="grad">
+              <DecryptedText
+                text="VAITLA"
+                animateOn="view"
+                speed={70}
+                maxIterations={15}
+              />
+            </span>
+            <br />
+            <DecryptedText
+              text="BILWANATH"
+              animateOn="view"
+              speed={70}
+              maxIterations={15}
+            />
+          </h1>
+          <p className="hero__sub">
+            <DecryptedText
+              text="B.Tech Computer Science student passionate about building scalable web applications, AI-powered tools, and intuitive digital experiences."
+              animateOn="view"
+              speed={20}
+              maxIterations={10}
+            />
+          </p>
           <div className="hero__actions">
             <a href="#work" className="btn btn--gradient">View Projects</a>
             <a href="/Vaitla_Bilwanath_Resume.pdf" download="Vaitla_Bilwanath_Resume.pdf" className="btn btn--outline-purple">Download Resume</a>
