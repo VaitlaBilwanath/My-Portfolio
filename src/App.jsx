@@ -5,6 +5,7 @@ import ChromaGrid from './components/ChromaGrid/ChromaGrid';
 import BorderGlow from './components/BorderGlow/BorderGlow';
 import Particles from './components/Particles/Particles';
 import TextType from './components/TextType/TextType';
+import SplitText from './components/SplitText/SplitText';
 
 const Lanyard = lazy(() => import('./components/Lanyard/Lanyard'));
 
@@ -208,7 +209,35 @@ export default function App() {
               loop={true}
             />
           </p>
-          <h1 className="hero__title"><span className="grad">VAITLA</span><br />BILWANATH</h1>
+          <h1 className="hero__title">
+            <span className="grad">
+              <SplitText
+                text="VAITLA"
+                delay={60}
+                duration={0.7}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 30 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.1}
+                textAlign="center"
+                tag="span"
+              />
+            </span>
+            <br />
+            <SplitText
+              text="BILWANATH"
+              delay={60}
+              duration={0.7}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 30 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              textAlign="center"
+              tag="span"
+            />
+          </h1>
           <p className="hero__sub">B.Tech Computer Science student passionate about building scalable web applications, AI-powered tools, and intuitive digital experiences.</p>
           <div className="hero__actions">
             <a href="#work" className="btn btn--gradient">View Projects</a>
