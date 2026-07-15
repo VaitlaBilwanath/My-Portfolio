@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState, Suspense, lazy } from 'react';
 import Lightfall from './lightfall';
 import PillNav from './components/PillNav/PillNav';
-import CardSwap, { Card } from './components/CardSwap/CardSwap';
-import ChromaGrid from './components/ChromaGrid/ChromaGrid';
-import CircularGallery from './components/CircularGallery/CircularGallery';
 import ScrollStack, { ScrollStackItem } from './components/ScrollStack/ScrollStack';
 import BorderGlow from './components/BorderGlow/BorderGlow';
 import Particles from './components/Particles/Particles';
@@ -61,7 +58,6 @@ export default function App() {
   const bgRef = useRef(null);
   const progressRef = useRef(null);
   const [activeSection, setActiveSection] = useState('#hero');
-  const [projectsView, setProjectsView] = useState('grid'); // 'grid' | 'stack' | 'carousel' | 'scroll'
 
   // ScrollSpy to track active section
   useEffect(() => {
@@ -222,129 +218,34 @@ export default function App() {
           alphaParticles={true}
           disableRotation={false}
         />
-        <div className="section__header-toggle">
-          <h2 className="section__title reveal" style={{ margin: 0 }}>Selected Work</h2>
-          <div className="view-toggle">
-            <button
-              className={`toggle-btn ${projectsView === 'grid' ? 'active' : ''}`}
-              onClick={() => setProjectsView('grid')}
-            >
-              Spotlight Grid
-            </button>
-            <button
-              className={`toggle-btn ${projectsView === 'stack' ? 'active' : ''}`}
-              onClick={() => setProjectsView('stack')}
-            >
-              3D Stack
-            </button>
-            <button
-              className={`toggle-btn ${projectsView === 'carousel' ? 'active' : ''}`}
-              onClick={() => setProjectsView('carousel')}
-            >
-              3D Carousel
-            </button>
-            <button
-              className={`toggle-btn ${projectsView === 'scroll' ? 'active' : ''}`}
-              onClick={() => setProjectsView('scroll')}
-            >
-              Stack-on-Scroll
-            </button>
-          </div>
-        </div>
-
-        <div style={{ marginTop: '3rem', minHeight: '660px', position: 'relative' }}>
-          {projectsView === 'grid' ? (
-            <ChromaGrid
-              items={projects}
-              columns={3}
-              rows={2}
-              radius={280}
-            />
-          ) : projectsView === 'stack' ? (
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '560px', width: '100%', position: 'relative' }}>
-              <CardSwap
-                width={480}
-                height={520}
-                cardDistance={40}
-                verticalDistance={30}
-                delay={5000}
-                pauseOnHover={true}
-              >
-                {projects.map(project => (
-                  <Card key={project.id}>
-                    <article className="card" style={{ height: '100%', margin: 0, display: 'flex', flexDirection: 'column' }}>
-                      <div className="card__media">
-                        <img src={project.image} alt={project.title} />
-                      </div>
-                      <h3 className="card__title">{project.title}</h3>
-                      <p className="card__desc">{project.desc}</p>
-                      <div className="card__tags">
-                        {project.tags.map(tag => (
-                          <span key={tag}>{tag}</span>
-                        ))}
-                      </div>
-                      <div className="card__actions">
-                        <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" className="btn-project btn-project--code">Code</a>
-                        {project.liveUrl && project.liveUrl !== '#' && (
-                          <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-project btn-project--live">Live Link</a>
-                        )}
-                      </div>
-                    </article>
-                  </Card>
-                ))}
-              </CardSwap>
-            </div>
-          ) : projectsView === 'carousel' ? (
-            <div style={{ height: '600px', position: 'relative', width: '100%', overflow: 'hidden' }}>
-              <CircularGallery
-                bend={3}
-                textColor="#ffffff"
-                borderRadius={0.05}
-                scrollEase={0.03}
-                fontUrl="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
-                font="bold 28px Orbitron"
-                items={projects.map(p => ({
-                  image: p.image,
-                  text: p.title,
-                  url: p.liveUrl && p.liveUrl !== '#' ? p.liveUrl : p.codeUrl
-                }))}
-                onItemClick={(item) => {
-                  if (item?.url) {
-                    window.open(item.url, '_blank', 'noopener,noreferrer');
-                  }
-                }}
-              />
-            </div>
-          ) : (
-            <div style={{ height: '600px', position: 'relative', width: '100%', overflow: 'visible' }}>
-              <ScrollStack useWindowScroll={false} itemDistance={60} itemStackDistance={35} baseScale={0.88}>
-                {projects.map(project => (
-                  <ScrollStackItem key={project.id}>
-                    <article className="card" style={{ height: '100%', margin: 0, display: 'flex', flexDirection: 'row', gap: '2rem', padding: '2rem', alignItems: 'center' }}>
-                      <div className="card__media" style={{ width: '40%', height: '100%', flexShrink: 0, borderRadius: '12px', overflow: 'hidden' }}>
-                        <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                      </div>
-                      <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, height: '100%', justifyContent: 'center' }}>
-                        <h3 className="card__title" style={{ fontSize: '1.45rem', marginBottom: '0.6rem' }}>{project.title}</h3>
-                        <p className="card__desc" style={{ fontSize: '0.94rem', marginBottom: '1.2rem', WebkitLineClamp: 3, display: '-webkit-box', WebkitBoxOrient: 'vertical', overflow: 'hidden', color: 'var(--muted)', lineHeight: '1.5' }}>{project.desc}</p>
-                        <div className="card__tags" style={{ marginBottom: '1.4rem' }}>
-                          {project.tags.map(tag => (
-                            <span key={tag}>{tag}</span>
-                          ))}
-                        </div>
-                        <div className="card__actions" style={{ marginTop: 'auto' }}>
-                          <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" className="btn-project btn-project--code">Code</a>
-                          {project.liveUrl && project.liveUrl !== '#' && (
-                            <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-project btn-project--live">Live Link</a>
-                          )}
-                        </div>
-                      </div>
-                    </article>
-                  </ScrollStackItem>
-                ))}
-              </ScrollStack>
-            </div>
-          )}
+        <h2 className="section__title reveal">Selected Work</h2>
+        <div style={{ marginTop: '3rem', minHeight: '600px', position: 'relative', width: '100%', overflow: 'visible' }}>
+          <ScrollStack useWindowScroll={false} itemDistance={60} itemStackDistance={35} baseScale={0.88}>
+            {projects.map(project => (
+              <ScrollStackItem key={project.id}>
+                <article className="card" style={{ height: '100%', margin: 0, display: 'flex', flexDirection: 'row', gap: '2rem', padding: '2rem', alignItems: 'center' }}>
+                  <div className="card__media" style={{ width: '40%', height: '100%', flexShrink: 0, borderRadius: '12px', overflow: 'hidden' }}>
+                    <img src={project.image} alt={project.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', flexGrow: 1, height: '100%', justifyContent: 'center' }}>
+                    <h3 className="card__title" style={{ fontSize: '1.45rem', marginBottom: '0.6rem' }}>{project.title}</h3>
+                    <p className="card__desc" style={{ fontSize: '0.94rem', marginBottom: '1.2rem', WebkitLineClamp: 3, display: '-webkit-box', WebkitBoxOrient: 'vertical', overflow: 'hidden', color: 'var(--muted)', lineHeight: '1.5' }}>{project.desc}</p>
+                    <div className="card__tags" style={{ marginBottom: '1.4rem' }}>
+                      {project.tags.map(tag => (
+                        <span key={tag}>{tag}</span>
+                      ))}
+                    </div>
+                    <div className="card__actions" style={{ marginTop: 'auto' }}>
+                      <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" className="btn-project btn-project--code">Code</a>
+                      {project.liveUrl && project.liveUrl !== '#' && (
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="btn-project btn-project--live">Live Link</a>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              </ScrollStackItem>
+            ))}
+          </ScrollStack>
         </div>
       </section>
 
