@@ -363,22 +363,30 @@ export default function App() {
 
       {/* Education Section */}
       <section className="section" id="education">
-        <h2 className="section__title reveal">Education &amp; Experience</h2>
+        <h2 className="section__title reveal">Education</h2>
         <div className="timeline reveal">
           <div className="timeline__item">
-            <div className="timeline__date">2023 — 2027</div>
+            <div className="timeline__date">2025 – 2029 (Expected)</div>
             <div className="timeline__content">
-              <h3>B.Tech in Computer Science Engineering</h3>
-              <p className="timeline__institution">Your University</p>
-              <p className="timeline__desc">Specializing in Full Stack Development and Artificial Intelligence. Learning core engineering principles, database systems, algorithms, and advanced software design.</p>
+              <h3>Bachelor of Technology (B.Tech)</h3>
+              <p className="timeline__institution">Aurora Deemed to be University</p>
+              <p className="timeline__desc">Computer Science &amp; Engineering (Full Stack Development)</p>
             </div>
           </div>
           <div className="timeline__item">
-            <div className="timeline__date">2024</div>
+            <div className="timeline__date">2023 – 2025</div>
             <div className="timeline__content">
-              <h3>Full Stack Developer Trainee</h3>
-              <p className="timeline__institution">FirstCry Intellitots (Project Collaboration)</p>
-              <p className="timeline__desc">Developed a comprehensive role-based teacher performance management and task dashboard web application using React, Node.js, and PostgreSQL.</p>
+              <h3>Intermediate (Class XII)</h3>
+              <p className="timeline__institution">Ayati Junior College</p>
+              <p className="timeline__desc">Achieved 83%</p>
+            </div>
+          </div>
+          <div className="timeline__item">
+            <div className="timeline__date">Completed in 2023</div>
+            <div className="timeline__content">
+              <h3>Secondary School (Class X)</h3>
+              <p className="timeline__institution">Spring Fields High School</p>
+              <p className="timeline__desc">Achieved 85%</p>
             </div>
           </div>
         </div>
