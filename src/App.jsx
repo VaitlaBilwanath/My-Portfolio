@@ -210,20 +210,19 @@ export default function App() {
             />
           </p>
           <h1 className="hero__title">
-            <span className="grad">
-              <SplitText
-                text="VAITLA"
-                delay={60}
-                duration={0.7}
-                ease="power3.out"
-                splitType="chars"
-                from={{ opacity: 0, y: 30 }}
-                to={{ opacity: 1, y: 0 }}
-                threshold={0.1}
-                textAlign="center"
-                tag="span"
-              />
-            </span>
+            <SplitText
+              text="VAITLA"
+              className="grad"
+              delay={60}
+              duration={0.7}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 30 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              textAlign="center"
+              tag="span"
+            />
             <br />
             <SplitText
               text="BILWANATH"

@@ -103,6 +103,19 @@ a { color: inherit; text-decoration: none; }
   background-clip: text;
   color: transparent;
 }
+.grad.split-parent {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  color: initial !important;
+}
+.grad .split-char {
+  background: linear-gradient(120deg, #ff6ec4, #7873f5, #43e97b);
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 .hero__sub { margin: 1.5rem 0 2rem; color: var(--muted); font-size: 1.1rem; }
 .hero__scroll-hint {
   position: absolute;
